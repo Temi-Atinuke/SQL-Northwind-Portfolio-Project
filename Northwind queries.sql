@@ -97,5 +97,53 @@ JOIN categories c ON p.category_id = c.category_id
 GROUP BY c.category_name, p.product_name;
 -------------------------------------------------------------------------------------------------------------
 
+---Select the name of customers who have not purchased any product
+SELECT contact_name, customer_id FROM customers
+WHERE customer_ID NOT IN (
+    SELECT DISTINCT customer_ID
+    FROM orders
+);
+---------------------------------------------------------------------------------------------------------------
+--Select the name, address, city, and region of employees that have placed orders to be delivered in Belgium. 
+-- Write two versions of the query, with and without join.
+--WITH JOIN
+SELECT e.first_name, e.last_name, e.address, e.city, e,region
+FROM employees e
+JOIN Orders o ON e.employee_ID = o.employee_ID
+WHERE ship_country = 'Belgium';
 
+---WITHOUT JOIN (subquery)
+SELECT first_name, last_name, address, city, region
+FROM employees
+WHERE employee_ID IN (
+    SELECT employee_ID
+    FROM orders
+    WHERE ship_country = 'Belgium'
+);
+-----------------------------------------------------------------------------------------------------------
+--Select the names of employees who are strictly older than: 
+---(a) any employee who lives in Tacoma. (b) all employees who live in Kirkland
+
+SELECT first_name, last_name
+FROM employees
+WHERE birth_date < ANY (SELECT birth_date FROM employees WHERE city = 'Tacoma');
+
+SELECT first_name, last_name
+FROM employees 
+WHERE birth_date < ALL (SELECT birth_date FROM employees WHERE City = 'Kirkland');
+
+------------------------------------------------------------------------------------------------------------
+---Select the name of employees who work longer than any employee of London.
+SELECT first_name, last_name
+FROM employees
+WHERE hire_date < ANY (SELECT hire_date FROM employees WHERE city = 'London');
+----------------------------------------------------------------------------------------------------
+--Select the employee name and the customer name for orders that are sent by the company ‘Speedy Express’ to customers who live in city Graz.
+
+SELECT DISTINCT e.first_name, e.last_name, c.contact_name
+FROM employees e
+JOIN orders AS o ON o.employee_ID = e.employee_ID
+JOIN customers AS c ON o.customer_ID = c.customer_ID
+JOIN shippers AS s ON shipper_ID = s.shipper_ID
+WHERE s.company_name ='Speedy Express' AND c.city = 'Graz';
 
