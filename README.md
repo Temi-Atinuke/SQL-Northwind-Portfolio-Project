@@ -3,7 +3,7 @@
 This repository contains data for a fictional company, Northwind Traders, which imports and exports specialty foods globally. The database includes various tables that store information about customers, orders, employees, products, suppliers, and more, emulating a real-world business environment. It serves as a useful resource for practicing SQL queries, designing database schemas, and gaining a deeper understanding of relational database concepts.
 
 
-# Table of Content
+# Table of Contents
 Tables
 
 Relationship
