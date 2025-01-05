@@ -8,7 +8,7 @@ Tables
 
 Relationship
 
-Queries and Answers
+Queries 
 
 Summary
 
@@ -30,8 +30,8 @@ Products are supplied by Suppliers via the SupplierID.
 
 Products belong to Categories via the CategoryID.
 
-# Queries and Answers
-Northwind queries.sql contains a list of sample queries with answers using the northwind database. 
+# Queries
+Northwind queries.sql contains a list of sample queries using the northwind database. 
 
 # Summary
 The Northwind database is an excellent tool for gaining practical knowledge of relational databases and SQL. It serves as a real-world example of how businesses organize and manage their data, making it ideal for students, developers, and database administrators alike. By exploring the database and executing queries, you can develop hands-on skills in data manipulation, reporting, and understanding intricate relationships between different data sets.
